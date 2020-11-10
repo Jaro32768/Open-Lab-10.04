@@ -14,8 +14,13 @@ namespace Open_Lab_10._01
         static void Main(string[] args)
         {
             Book LOTR = new Book("Creative name of book", -100, "encyclopedia", "Jaro", 2020);
-
-            Console.WriteLine(LOTR.Title + ", " + LOTR.Pages + ", " + LOTR.Category + ", " + LOTR.Author + ", " + LOTR.ReleaseDate);
+            Book LOTR2 = new Book("Another creative name of book", 25);
+            Book LOTR3 = new Book();
+            Book HOBIT = new Book("HOBIT", 310, "fantasy", "Tolkien", 2020);
+            LOTR.GetBook();
+            LOTR2.GetBook();
+            LOTR3.GetBook();
+            HOBIT.GetBook();
             Console.ReadKey();
         }
     }
@@ -34,10 +39,29 @@ namespace Open_Lab_10._01
             Author = author;
             ReleaseDate = releaseDate;
         }
+        public Book(string title, int pages)
+        {
+            Title = title;
+            Pages = pages;
+            Category = "-1";
+            Author = "-1";
+            ReleaseDate = -1;
+        }
+        public Book()
+        {
+            Title = "-1";
+            Pages = -1;
+            Category = "-1";
+            Author = "-1";
+            ReleaseDate = -1;
+        }
         public string Title
         {
-            get;
-            set;
+            get => this.title;
+            set
+            {
+                this.title = value;
+            }
         }
 
         public int Pages
@@ -55,14 +79,20 @@ namespace Open_Lab_10._01
 
         public string Category
         {
-            get;
-            set;
+            get => this.category;
+            set
+            {
+                this.category = value;
+            }
         }
 
         public string Author
         {
-            get;
-            set;
+            get => this.author;
+            set
+            {
+                this.author = value;
+            }
         }
 
         public int ReleaseDate
@@ -76,6 +106,10 @@ namespace Open_Lab_10._01
                     this.releaseDate = -1;
                 }
             }
+        }
+        public void GetBook()
+        {
+            Console.WriteLine(String.Format($"{title} , {pages} , {category} , {author} , {releaseDate}"));
         }
     }
 }
